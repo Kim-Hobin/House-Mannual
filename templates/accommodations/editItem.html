@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Edit Item
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+<button>
+    <a href = "{% url "accommodations:detail" accommodation.slug %}"> > Client View</a>
+</button>
+<form method="POST" action="{% url "accommodations:editItem" accommodation.id %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Update">
+</form>
+{% endblock content %} 

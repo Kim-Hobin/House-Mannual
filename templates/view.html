@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_name %}
+    Ai unmanned solution
+{% endblock page_name %}
+{% block content %}
+   {% for accommodation in accommodations %}
+<div class="bg_img" style="background-image" >
+    <img src="/media/{{accommodation.background_image}}" width="100%" height="500px" />
+    <div class="box">
+        <button class="btn_01">채널톡 문의하기</button>
+        <button class="btn_02">공유하기</button>
+    </div>
+</div>
+    <div id="container">
+    <div class="con01">
+        <div class="profile" id="avatar" >
+            <img src="/media/{{accommodation.avatar}}" width= "150px" height= "150px" />
+            </div>
+        <div id="name"><h1>{{accommodation.name}}</h1></div>
+        <div id="description">{{accommodation.description}}</div>
+    </div>
+    <div id="table" class="margin">
+        <h3>주요 정보</h3>
+        <div id="row" class="line">
+            <span class="cell col1"><h4>주소</h4></span>
+            <span class="cell col2">{{accommodation.address}}</span>
+            <span class="cell col3"><button>지도보기</button></span>
+        </div>
+        <div id="row" class="line">
+            <span class="cell col1"><h4>연락처</h4></span>
+            <span class="cell col2">{{accommodation.phone_number}}</span>
+            <span class="cell col3"><button>전화하기</button></span>
+        </div>
+        <div id="row" class="line">
+            <span class="cell col2"><h4>체크인</h4></span>
+            <span class="cell col2">{{accommodation.check_in}}</span>
+            <span class="cell col2"><h4>체크아웃</h4></span>
+            <span class="cell col2">{{accommodation.check_out}}</span>
+            <span class="cell col4"></span>
+        </div>
+        <div id="row" class="line">
+            <span class="cell col1"><h4>와이파이</h4></span>
+            <span class="cell col2">{{accommodation.wifi}}</span>
+        </div>
+    </div>
+    <div class="con_02 margin">
+        <h3>편의시설</h3>
+        {{accommodation.facility}}
+    </div>
+    <div class="con_02 margin">
+        <h3>재활용</h3>
+        {{accommodation.recycle}}
+    </div>
+    <div class="con_02 margin">
+        <h3>안전</h3>
+        {{accommodation.house_rule}}
+    </div>
+    <div class="con_02 margin">
+        <h3>유의사항</h3>
+        {{accommodation.content|safe}}
+    </div>    
+    {% endfor %}
+    <div class="margin"> <h3>주변 관광지</h3></div>
+    {% comment %} <div class="w3-content" style="max-width:700px;position:relative">
+    <a class="w3-btn-floating" style="position:absolute;top:45%;left:0" onclick="plusDivs(-1)">❮</a>
+    <a class="w3-btn-floating" style="position:absolute;top:45%;right:0" onclick="plusDivs(1)">❯</a> {% endcomment %}
+    <ul class="h3_attraction">
+    {% for attraction in attractions %}
+        <li class="attraction_li">
+            <span><img src="/media/{{attraction.file}}" width= "50%" height= "150px" /></span>
+            <p><h4>{{attraction.caption}}</h4></p>
+            <p>{{attraction.address}}</p>
+            <p>{{attraction.attraction_phone_number}}</p>
+        </li>
+       {% comment %}  <script>
+            for (i=0;i<1;i++){
+                attraction
+            }
+        </script>
+        <img class="mySlides" src="/media/{{attraction.file}}"  width= "600px" height= "500px">
+ 
+        </div>
+
+        <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+        showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = x.length} ;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+        }
+        x[slideIndex-1].style.display = "block";  
+        }
+        </script> {% endcomment %}
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

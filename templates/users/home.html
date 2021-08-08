@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    home
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+<H2>Item List</H2>
+
+    {% for acc in accommodations %}
+    
+        <a href="{% url "accommodations:editItem" acc.id %}">{{acc.name}}</a>
+    {% endfor %}
+
+{% endblock content %} 

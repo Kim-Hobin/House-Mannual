@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Create Item
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+<h1>df</h1>
+<h1>{{id}}</h1>
+<form method="POST" action="{% url "accommodations:createItem" user.id %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>create</button>
+</form>
+{% endblock content %}
